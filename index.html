@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cari Makan - Tembalang UNDIP</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    
+    <!-- Font Awesome untuk Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <span>Cari Makan UNDIP</span>
+                </div>
+                <p class="tagline">Temukan tempat makan terbaik di sekitar Tembalang</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-container">
+            <!-- Left Panel - Filter & Search -->
+            <div class="left-panel">
+                <div class="filter-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-sliders-h"></i> Filter Pencarian
+                    </h2>
+
+                    <!-- Search by Name -->
+                    <div class="filter-group">
+                        <label for="search-name">
+                            <i class="fas fa-search"></i> Nama Tempat
+                        </label>
+                        <input type="text" id="search-name" placeholder="Cari nama warung/restoran..." />
+                    </div>
+
+                    <!-- Kategori Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-list"></i> Kategori
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="Warung Makan" />
+                                <span>Warung Makan</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="Restoran" />
+                                <span>Restoran</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="Cafe" />
+                                <span>Cafe</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="Makanan Indonesia" />
+                                <span>Makanan Indonesia</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="Makanan Cepat Saji" />
+                                <span>Makanan Cepat Saji</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="Minuman & Dessert" />
+                                <span>Minuman & Dessert</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-tag"></i> Rentang Harga
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="price" value="0-10000" />
+                                <span>&lt; Rp10.000</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="price" value="10000-20000" />
+                                <span>Rp10.000 - Rp20.000</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="price" value="20000-35000" />
+                                <span>Rp20.000 - Rp35.000</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="price" value="35000-999999" />
+                                <span>&gt; Rp35.000</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Distance Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-map-marker-alt"></i> Jarak Maksimal
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="distance" value="500" />
+                                <span>&lt; 500 m</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="distance" value="1000" />
+                                <span>&lt; 1 km</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="distance" value="2000" />
+                                <span>&lt; 2 km</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="distance" value="5000" />
+                                <span>&lt; 5 km</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Lokasi Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-location-dot"></i> Lokasi Tembalang
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="location" value="Sekitar UNDIP" />
+                                <span>Sekitar UNDIP</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="location" value="Tembalang Atas" />
+                                <span>Tembalang Atas</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="location" value="Tembalang Bawah" />
+                                <span>Tembalang Bawah</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="location" value="Jalan Prof. Soedarto" />
+                                <span>Jalan Prof. Soedarto</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="location" value="Tirto Agung" />
+                                <span>Tirto Agung</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="location" value="Ngesrep" />
+                                <span>Ngesrep</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="location" value="Bulusan" />
+                                <span>Bulusan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Search Button -->
+                    <button id="search-btn" class="search-btn">
+                        <i class="fas fa-search"></i> Cari Tempat Makan
+                    </button>
+
+                    <!-- Reset Button -->
+                    <button id="reset-btn" class="reset-btn">
+                        <i class="fas fa-redo"></i> Reset Filter
+                    </button>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section">
+                    <h3 class="results-title">
+                        <i class="fas fa-list"></i> Hasil Pencarian
+                    </h3>
+                    <div id="results-container" class="results-container">
+                        <div class="no-results">
+                            <i class="fas fa-search"></i>
+                            <p>Tekan tombol "Cari Tempat Makan" untuk memulai pencarian</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Map -->
+            <div class="right-panel">
+                <div class="map-container">
+                    <div id="map" class="map"></div>
+                    <div id="location-status" class="location-status">
+                        <i class="fas fa-spinner fa-spin"></i> Mencari lokasi Anda...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Toggle Button -->
+        <button id="toggle-panel" class="toggle-panel-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="modal-body" class="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
