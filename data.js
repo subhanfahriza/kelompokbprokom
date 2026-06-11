@@ -321,6 +321,22 @@ const restaurantData = [
         distance: 1.55,
         photo: "url(...)",
         description: "Lumpia goreng renyah dan bakso dalam kuah gurih. Pelayanan ramah dan tempat bersih."
+    },
+    {
+        id: 21,
+        name: "Ayam Geprek Maestro",
+        category: "Warung Makan",
+        rating: 4.4,
+        reviews: 167,
+        priceRange: 22000,
+        location: "Bulusan",
+        address: "Jl. Gerung Sari 1C, Kelurahan Bulusan, Kecamatan Tembalang, Semarang (Belakang Rusunawa UNDIP)",
+        lat: -7.0825,
+        lng: 110.4155,
+        icon: "🍗",
+        distance: 2.0,
+        photo: "url(...)",
+        description: "Ayam geprek premium dengan cita rasa autentik, daging empuk bersama sambal yang menggugah selera. Tersedia berbagai pilihan level pedas dan topping pelengkap. Cocok untuk makan siang atau makan malam dengan harga terjangkau."
     }
 ];
 
