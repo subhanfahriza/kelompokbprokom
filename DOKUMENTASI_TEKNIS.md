@@ -1,4 +1,4 @@
-# 🔍 Dokumentasi Teknis - Cari Makan UNDIP
+# 🔍 Dokumentasi Teknis - Cari Makan (Kampus Utama Universitas Diponegoro)
 
 Dokumentasi lengkap untuk developer yang ingin memahami atau mengembangkan aplikasi lebih lanjut.
 
@@ -25,11 +25,11 @@ Map Update → Modal Detail
 
 ### 1. **Peta (Leaflet)**
 - **Inisialisasi**: `initMap()`
-- **Lokasi Default**: UNDIP Tembalang (-7.0675, 110.4069)
+- **Lokasi Default**: Kampus utama Universitas Diponegoro (Undip) — Jalan Prof. Soedarto, SH, Kecamatan Tembalang, Kota Semarang, Jawa Tengah (Kode Pos 50275). Kawasan ini berada di area dataran tinggi Semarang atas dengan luas total sekitar 1,3 juta meter persegi. Titik koordinat utama kampus ini adalah 7°2'56" LS dan 110°26'17" BT (decimal: -7.048889, 110.438056)
 - **Zoom Level**: 15 (optimal untuk area Tembalang)
 - **Tile Layer**: OpenStreetMap (gratis, open source)
 - **Markers**: 
-  - Biru: Pusat UNDIP (referensi)
+  - Biru: Pusat Kampus Utama Universitas Diponegoro (referensi)
   - Merah: Lokasi pengguna (dengan pulse animation)
   - Hijau: Hasil pencarian tempat makan
 
@@ -38,7 +38,7 @@ Map Update → Modal Detail
 function getUserLocation()
 ├── navigator.geolocation.getCurrentPosition()
 ├── Success: Set userLocation.lat/lng
-└── Fallback: Default ke UNDIP Tembalang
+  └── Fallback: Default ke Kampus Utama Universitas Diponegoro (Tembalang)
 ```
 
 **Koordinat Format**: Latitude, Longitude (WGS84)
@@ -213,7 +213,7 @@ Start
   ↓
 Request Geolocation
   ├─ Granted → Set user location
-  └─ Denied → Use UNDIP default
+  └─ Denied → Use Kampus Utama Universitas Diponegoro default
   ↓
 Show Map with User Marker
   ↓
