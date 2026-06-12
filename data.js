@@ -331,8 +331,8 @@ const restaurantData = [
         priceRange: 22000,
         location: "Bulusan",
         address: "Jl. Gerung Sari 1C, Kelurahan Bulusan, Kecamatan Tembalang, Semarang (Belakang Rusunawa UNDIP)",
-        lat: -7.05643051229876
-        lng: 110.44361306068305
+        lat: -7.05643051229876,
+        lng: 110.44361306068305,
         icon: "🍗",
         distance: 2.0,
         photo: "url(...)",
