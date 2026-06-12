@@ -9,6 +9,8 @@ let restaurantMarkers = [];
 let userLocation = { lat: null, lng: null };
 let allRestaurants = [];
 let currentResults = [];
+// UNDIP center (decimal) — from provided DMS 7°2'56" LS, 110°26'17" BT
+const UNDIP_CENTER = { lat: -7.048889, lng: 110.438056 };
 
 // DOM Elements
 const searchBtn = document.getElementById('search-btn');
@@ -49,11 +51,8 @@ function initApp() {
 // ============================================
 
 function initMap() {
-    // Pusat peta di UNDIP Tembalang
-    const centerLat = -7.0675;
-    const centerLng = 110.4069;
-
-    map = L.map('map').setView([centerLat, centerLng], 16);
+    // Pusat peta: gunakan nilai pusat Kampus Utama Undip (UNDIP_CENTER)
+    map = L.map('map').setView([UNDIP_CENTER.lat, UNDIP_CENTER.lng], 16);
 
     // Tambah tile layer dari OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -63,7 +62,7 @@ function initMap() {
     }).addTo(map);
 
     // Add UNDIP marker sebagai pusat referensi
-    L.marker([centerLat, centerLng], {
+    L.marker([UNDIP_CENTER.lat, UNDIP_CENTER.lng], {
         icon: L.icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -72,7 +71,7 @@ function initMap() {
             popupAnchor: [1, -34],
             shadowSize: [41, 41]
         })
-    }).addTo(map).bindPopup('<strong>📍 Pusat UNDIP Tembalang</strong><br/>Referensi lokasi pencarian');
+    }).addTo(map).bindPopup('<strong>📍 Kampus Utama Universitas Diponegoro (Undip)</strong><br/>Referensi lokasi pencarian');
 }
 
 // ============================================
@@ -109,8 +108,9 @@ function getUserLocation() {
             },
             (error) => {
                 // Fallback ke UNDIP Tembalang
-                userLocation.lat = -7.0675;
-                userLocation.lng = 110.4069;
+                // Set fallback ke pusat kampus utama Undip
+                userLocation.lat = UNDIP_CENTER.lat;
+                userLocation.lng = UNDIP_CENTER.lng;
                 
                 let errorMsg = 'Menggunakan lokasi default: UNDIP Tembalang';
                 if (error.code === error.PERMISSION_DENIED) {
@@ -128,10 +128,100 @@ function getUserLocation() {
         );
     } else {
         // Fallback jika browser tidak support geolocation
-        userLocation.lat = -7.0675;
-        userLocation.lng = 110.4069;
+        userLocation.lat = UNDIP_CENTER.lat;
+        userLocation.lng = UNDIP_CENTER.lng;
         updateLocationStatus(false, 'Geolocation tidak didukung');
     }
+}
+
+// ============================================
+// DEBUG / AUDIT HELPERS
+// ============================================
+
+function generateDebugTable(filters, reference = UNDIP_CENTER, referenceLabel = 'UNDIP') {
+    // Remove existing debug container
+    const existing = document.getElementById('debug-table-container');
+    if (existing) existing.remove();
+
+    const container = document.createElement('div');
+    container.id = 'debug-table-container';
+    container.style.padding = '12px';
+    container.style.marginTop = '12px';
+    container.style.background = '#fff3cd';
+    container.style.border = '1px solid #ffeeba';
+    container.style.maxHeight = '240px';
+    container.style.overflow = 'auto';
+
+    const title = document.createElement('div');
+    title.style.fontWeight = '600';
+    title.style.marginBottom = '8px';
+    title.textContent = 'DEBUG: Audit koordinat & jarak (sementara)';
+    container.appendChild(title);
+
+    const table = document.createElement('table');
+    table.style.width = '100%';
+    table.style.borderCollapse = 'collapse';
+    table.innerHTML = `
+        <thead>
+            <tr>
+                <th style="border-bottom:1px solid #ccc; text-align:left; padding:4px">Name</th>
+                <th style="border-bottom:1px solid #ccc; text-align:right; padding:4px">Lat</th>
+                <th style="border-bottom:1px solid #ccc; text-align:right; padding:4px">Lng</th>
+                <th style="border-bottom:1px solid #ccc; text-align:right; padding:4px">Dist UNDIP (m)</th>
+                <th style="border-bottom:1px solid #ccc; text-align:right; padding:4px">Dist User (m)</th>
+                <th style="border-bottom:1px solid #ccc; text-align:right; padding:4px">Dist Ref (${referenceLabel}) (m)</th>
+                <th style="border-bottom:1px solid #ccc; text-align:center; padding:4px">Passes Filter (${referenceLabel})</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    `;
+
+    const tbody = table.querySelector('tbody');
+
+    // Normalize selected distance thresholds (meters)
+    const selectedThresholds = (filters.distances || []).map(d => parseInt(d));
+
+    allRestaurants.forEach(r => {
+        const distUndipKm = typeof calculateDistance === 'function'
+            ? calculateDistance(UNDIP_CENTER.lat, UNDIP_CENTER.lng, r.lat, r.lng)
+            : null;
+        const distUserKm = (userLocation.lat && userLocation.lng && typeof calculateDistance === 'function')
+            ? calculateDistance(userLocation.lat, userLocation.lng, r.lat, r.lng)
+            : null;
+        const distRefKm = (reference && typeof calculateDistance === 'function')
+            ? calculateDistance(reference.lat, reference.lng, r.lat, r.lng)
+            : null;
+
+        const distUndipM = distUndipKm !== null ? Math.round(distUndipKm * 1000) : 'n/a';
+        const distUserM = distUserKm !== null ? Math.round(distUserKm * 1000) : 'n/a';
+
+        // Determine pass for UNDIP, User and chosen Reference using selected thresholds
+        const passUndip = selectedThresholds.length === 0 ? true : selectedThresholds.some(t => distUndipKm * 1000 <= t);
+        const passUser = selectedThresholds.length === 0 ? true : (distUserKm !== null && selectedThresholds.some(t => distUserKm * 1000 <= t));
+        const passRef = selectedThresholds.length === 0 ? true : (distRefKm !== null && selectedThresholds.some(t => distRefKm * 1000 <= t));
+
+        // Append row
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td style="padding:4px; border-bottom:1px solid #eee">${r.name}</td>
+            <td style="padding:4px; border-bottom:1px solid #eee; text-align:right">${r.lat}</td>
+            <td style="padding:4px; border-bottom:1px solid #eee; text-align:right">${r.lng}</td>
+            <td style="padding:4px; border-bottom:1px solid #eee; text-align:right">${distUndipM}</td>
+            <td style="padding:4px; border-bottom:1px solid #eee; text-align:right">${distUserM}</td>
+            <td style="padding:4px; border-bottom:1px solid #eee; text-align:right">${distRefKm !== null ? Math.round(distRefKm*1000) : 'n/a'}</td>
+            <td style="padding:4px; border-bottom:1px solid #eee; text-align:center">${passRef ? 'YES' : 'NO'}</td>
+        `;
+        tbody.appendChild(tr);
+
+        // Console log each item for easy copy-paste audit
+        console.log('[AUDIT]', r.name, 'lat=', r.lat, 'lng=', r.lng, 'distUNDIP(m)=', distUndipM, 'distUser(m)=', distUserM, 'distRef(m)=', distRefKm !== null ? Math.round(distRefKm*1000) : 'n/a', 'passRef=', passRef);
+    });
+
+    container.appendChild(table);
+
+    // Place debug container below results
+    const parent = document.querySelector('.left-panel .results-section') || document.body;
+    parent.appendChild(container);
 }
 
 // ============================================
@@ -249,8 +339,16 @@ function performSearch() {
     
     // Simulate delay for better UX
     setTimeout(() => {
-        // Filter data
-        currentResults = filterRestaurants(userLocation.lat, userLocation.lng, filters);
+            // Determine reference for distance filtering: if user selected only UNDIP location, use UNDIP_CENTER
+            const selectedLocations = filters.locations || [];
+            const useUndipAsReference = (selectedLocations.length === 1 && selectedLocations[0] === 'Sekitar Kampus Utama Undip');
+            const reference = useUndipAsReference ? UNDIP_CENTER : userLocation;
+
+            // Generate debug table & console logs to audit distances (with chosen reference)
+            try { generateDebugTable(filters, reference, useUndipAsReference ? 'UNDIP' : 'USER'); } catch (e) { console.error('generateDebugTable error', e); }
+
+            // Filter data using the chosen reference (UNDIP or user)
+            currentResults = filterRestaurants(reference.lat, reference.lng, filters);
         
         // Display results
         displayResults(currentResults);
@@ -360,6 +458,7 @@ function updateMapMarkers(results) {
                 shadowSize: [41, 41]
             })
         }).addTo(map);
+        console.log('[MAP] Adding marker:', restaurant.name, 'lat=', restaurant.lat, 'lng=', restaurant.lng);
         
         // Bind popup
         const popupContent = `
