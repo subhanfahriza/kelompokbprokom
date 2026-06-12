@@ -69,7 +69,7 @@ const restaurantData = [
     {
         id: 5,
         name: "Tanjungsari Chinese Food",
-        category: "Makanan Indonesia",
+        category: "Restoran",
         rating: 4.4,
         reviews: 366,
         priceRange: 15000,
