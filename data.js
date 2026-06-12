@@ -11,8 +11,8 @@ const restaurantData = [
         priceRange: 8000,
         location: "Sekitar UNDIP",
         address: "Jl. Prof. Soedarto SH, Tembalang",
-        lat: -7.0675,
-        lng: 110.4069,
+        lat: -7.0680,
+        lng: 110.4075,
         icon: "🍚",
         distance: 0.2,
         photo: "url(...)",
@@ -27,8 +27,8 @@ const restaurantData = [
         priceRange: 45000,
         location: "Jalan Prof. Soedarto",
         address: "Jl. Prof. Soedarto No. 123, Tembalang",
-        lat: -7.0685,
-        lng: 110.4050,
+        lat: -7.0690,
+        lng: 110.4055,
         icon: "🦐",
         distance: 0.5,
         photo: "url(...)",
@@ -43,8 +43,8 @@ const restaurantData = [
         priceRange: 25000,
         location: "Tembalang Atas",
         address: "Jl. Tembalang No. 45, Semarang",
-        lat: -7.0620,
-        lng: 110.4100,
+        lat: -7.0625,
+        lng: 110.4110,
         icon: "☕",
         distance: 0.8,
         photo: "url(...)",
@@ -59,8 +59,8 @@ const restaurantData = [
         priceRange: 10000,
         location: "Sekitar UNDIP",
         address: "Jl. Pendidikan, Tembalang",
-        lat: -7.0700,
-        lng: 110.4080,
+        lat: -7.0705,
+        lng: 110.4085,
         icon: "🍜",
         distance: 0.3,
         photo: "url(...)",
@@ -75,8 +75,8 @@ const restaurantData = [
         priceRange: 15000,
         location: "Tembalang Bawah",
         address: "Jl. Bulusan No. 67, Tembalang",
-        lat: -7.0750,
-        lng: 110.4120,
+        lat: -7.0760,
+        lng: 110.4130,
         icon: "🍛",
         distance: 1.2,
         photo: "url(...)",
@@ -91,8 +91,8 @@ const restaurantData = [
         priceRange: 35000,
         location: "Jalan Prof. Soedarto",
         address: "Jl. Prof. Soedarto, Tembalang",
-        lat: -7.0660,
-        lng: 110.4060,
+        lat: -7.0665,
+        lng: 110.4065,
         icon: "🍗",
         distance: 0.4,
         photo: "url(...)",
@@ -107,8 +107,8 @@ const restaurantData = [
         priceRange: 20000,
         location: "Tirto Agung",
         address: "Jl. Tirto Agung, Tembalang",
-        lat: -7.0590,
-        lng: 110.4140,
+        lat: -7.0595,
+        lng: 110.4145,
         icon: "🧋",
         distance: 1.5,
         photo: "url(...)",
@@ -123,8 +123,8 @@ const restaurantData = [
         priceRange: 12000,
         location: "Sekitar UNDIP",
         address: "Jl. Pendidikan, Tembalang",
-        lat: -7.0680,
-        lng: 110.4090,
+        lat: -7.0685,
+        lng: 110.4095,
         icon: "🥣",
         distance: 0.35,
         photo: "url(...)",
@@ -139,8 +139,8 @@ const restaurantData = [
         priceRange: 40000,
         location: "Jalan Prof. Soedarto",
         address: "Jl. Prof. Soedarto No. 100, Tembalang",
-        lat: -7.0670,
-        lng: 110.4075,
+        lat: -7.0675,
+        lng: 110.4080,
         icon: "🍔",
         distance: 0.45,
         photo: "url(...)",
@@ -155,8 +155,8 @@ const restaurantData = [
         priceRange: 11000,
         location: "Tembalang Atas",
         address: "Jl. Tembalang Atas No. 12, Semarang",
-        lat: -7.0610,
-        lng: 110.4110,
+        lat: -7.0615,
+        lng: 110.4115,
         icon: "🍲",
         distance: 0.9,
         photo: "url(...)",
@@ -171,8 +171,8 @@ const restaurantData = [
         priceRange: 50000,
         location: "Ngesrep",
         address: "Jl. Ngesrep, Tembalang",
-        lat: -7.0540,
-        lng: 110.4180,
+        lat: -7.0545,
+        lng: 110.4185,
         icon: "🥩",
         distance: 2.1,
         photo: "url(...)",
@@ -187,8 +187,8 @@ const restaurantData = [
         priceRange: 9000,
         location: "Bulusan",
         address: "Jl. Bulusan No. 34, Tembalang",
-        lat: -7.0820,
-        lng: 110.4150,
+        lat: -7.0825,
+        lng: 110.4155,
         icon: "🟫",
         distance: 2.0,
         photo: "url(...)",
@@ -203,8 +203,8 @@ const restaurantData = [
         priceRange: 15000,
         location: "Jalan Prof. Soedarto",
         address: "Jl. Prof. Soedarto, Tembalang",
-        lat: -7.0675,
-        lng: 110.4070,
+        lat: -7.0670,
+        lng: 110.4075,
         icon: "🥞",
         distance: 0.2,
         photo: "url(...)",
@@ -219,8 +219,8 @@ const restaurantData = [
         priceRange: 30000,
         location: "Tirto Agung",
         address: "Jl. Tirto Agung No. 88, Tembalang",
-        lat: -7.0580,
-        lng: 110.4160,
+        lat: -7.0585,
+        lng: 110.4165,
         icon: "🍗",
         distance: 1.6,
         photo: "url(...)",
@@ -235,8 +235,8 @@ const restaurantData = [
         priceRange: 12000,
         location: "Sekitar UNDIP",
         address: "Jl. Pendidikan, Tembalang",
-        lat: -7.0695,
-        lng: 110.4085,
+        lat: -7.0700,
+        lng: 110.4090,
         icon: "🧃",
         distance: 0.3,
         photo: "url(...)",
@@ -251,8 +251,8 @@ const restaurantData = [
         priceRange: 45000,
         location: "Tembalang Atas",
         address: "Jl. Tembalang No. 99, Semarang",
-        lat: -7.0615,
-        lng: 110.4105,
+        lat: -7.0620,
+        lng: 110.4110,
         icon: "🍝",
         distance: 0.85,
         photo: "url(...)",
@@ -267,8 +267,8 @@ const restaurantData = [
         priceRange: 7000,
         location: "Tembalang Bawah",
         address: "Jl. Bulusan, Tembalang",
-        lat: -7.0760,
-        lng: 110.4130,
+        lat: -7.0765,
+        lng: 110.4135,
         icon: "🥤",
         distance: 1.3,
         photo: "url(...)",
@@ -283,8 +283,8 @@ const restaurantData = [
         priceRange: 13000,
         location: "Ngesrep",
         address: "Jl. Ngesrep, Tembalang",
-        lat: -7.0530,
-        lng: 110.4190,
+        lat: -7.0535,
+        lng: 110.4195,
         icon: "🍞",
         distance: 2.2,
         photo: "url(...)",
@@ -299,8 +299,8 @@ const restaurantData = [
         priceRange: 35000,
         location: "Jalan Prof. Soedarto",
         address: "Jl. Prof. Soedarto, Tembalang",
-        lat: -7.0665,
-        lng: 110.4080,
+        lat: -7.0670,
+        lng: 110.4085,
         icon: "🍛",
         distance: 0.38,
         photo: "url(...)",
@@ -315,8 +315,8 @@ const restaurantData = [
         priceRange: 10000,
         location: "Tirto Agung",
         address: "Jl. Tirto Agung, Tembalang",
-        lat: -7.0595,
-        lng: 110.4155,
+        lat: -7.0600,
+        lng: 110.4160,
         icon: "🥟",
         distance: 1.55,
         photo: "url(...)",
@@ -331,8 +331,8 @@ const restaurantData = [
         priceRange: 22000,
         location: "Bulusan",
         address: "Jl. Gerung Sari 1C, Kelurahan Bulusan, Kecamatan Tembalang, Semarang (Belakang Rusunawa UNDIP)",
-        lat: -7.0825,
-        lng: 110.4155,
+        lat: -7.0830,
+        lng: 110.4160,
         icon: "🍗",
         distance: 2.0,
         photo: "url(...)",
@@ -345,26 +345,51 @@ function getRestaurants() {
     return restaurantData;
 }
 
-// Fungsi untuk menghitung jarak antara dua koordinat (Haversine formula)
+// Fungsi validasi koordinat
+function validateCoordinate(lat, lng) {
+    return lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
+}
+
+// Fungsi untuk menghitung jarak antara dua koordinat (Haversine formula dengan akurasi tinggi)
 function calculateDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371; // Radius Bumi dalam km
+    // Validasi input
+    if (!validateCoordinate(lat1, lon1) || !validateCoordinate(lat2, lon2)) {
+        console.error('Koordinat tidak valid:', {lat1, lon1, lat2, lon2});
+        return 0;
+    }
+    
+    const R = 6371; // Radius Bumi dalam km (nilai presisi)
+    
+    // Convert ke radian dengan presisi tinggi
     const dLat = (lat2 - lat1) * Math.PI / 180;
     const dLon = (lon2 - lon1) * Math.PI / 180;
+    
+    // Haversine formula
     const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
               Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
               Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c; // Jarak dalam km
+    
+    // Return jarak dalam km
+    return R * c;
 }
 
 // Fungsi untuk filter dan sort data
 function filterRestaurants(userLat, userLng, filters) {
+    // Validasi lokasi user
+    if (!validateCoordinate(userLat, userLng)) {
+        console.error('Lokasi pengguna tidak valid');
+        return [];
+    }
+    
     let results = restaurantData.slice();
 
-    // Calculate distance for each restaurant
+    // Calculate distance for each restaurant dengan presisi tinggi
     results.forEach(restaurant => {
-        restaurant.distanceKm = calculateDistance(userLat, userLng, restaurant.lat, restaurant.lng);
-        restaurant.distanceM = restaurant.distanceKm * 1000;
+        const distance = calculateDistance(userLat, userLng, restaurant.lat, restaurant.lng);
+        restaurant.distanceKm = parseFloat(distance.toFixed(3)); // Presisi 3 desimal
+        restaurant.distanceM = Math.round(restaurant.distanceKm * 1000); // Pembulatan ke meter terdekat
     });
 
     // Filter berdasarkan nama

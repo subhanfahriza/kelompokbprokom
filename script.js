@@ -53,7 +53,7 @@ function initMap() {
     const centerLat = -7.0675;
     const centerLng = 110.4069;
 
-    map = L.map('map').setView([centerLat, centerLng], 15);
+    map = L.map('map').setView([centerLat, centerLng], 16);
 
     // Tambah tile layer dari OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -81,28 +81,50 @@ function initMap() {
 
 function getUserLocation() {
     if (navigator.geolocation) {
+        // Options untuk akurasi tinggi
+        const options = {
+            enableHighAccuracy: true,  // Gunakan GPS untuk akurasi maksimal
+            timeout: 15000,             // Tunggu maksimal 15 detik
+            maximumAge: 0               // Jangan gunakan cache lokasi
+        };
+        
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 userLocation.lat = position.coords.latitude;
                 userLocation.lng = position.coords.longitude;
                 
+                // Cek akurasi koordinat
+                const accuracy = position.coords.accuracy;
+                
                 // Tampilkan marker lokasi pengguna
                 addUserMarker();
                 
-                // Update status
-                updateLocationStatus(true, 'Lokasi ditemukan ✓');
+                // Update status dengan info akurasi
+                const accuracyText = accuracy < 50 ? '✓ Akurat' : 
+                                     accuracy < 100 ? '~ Cukup Akurat' : '? Kurang Akurat';
+                updateLocationStatus(true, `Lokasi ditemukan ${accuracyText} (±${Math.round(accuracy)}m)`);
                 
                 // Pan map ke user location
-                map.setView([userLocation.lat, userLocation.lng], 15);
+                map.setView([userLocation.lat, userLocation.lng], 16);
             },
             (error) => {
                 // Fallback ke UNDIP Tembalang
                 userLocation.lat = -7.0675;
                 userLocation.lng = 110.4069;
                 
+                let errorMsg = 'Menggunakan lokasi default: UNDIP Tembalang';
+                if (error.code === error.PERMISSION_DENIED) {
+                    errorMsg = 'Izin lokasi ditolak. Buka izin di setting browser.';
+                } else if (error.code === error.POSITION_UNAVAILABLE) {
+                    errorMsg = 'Sinyal GPS tidak tersedia. Coba di area terbuka.';
+                } else if (error.code === error.TIMEOUT) {
+                    errorMsg = 'Geolocation timeout. Coba refresh halaman.';
+                }
+                
                 console.warn('Geolocation error:', error);
-                updateLocationStatus(false, 'Menggunakan lokasi default: UNDIP Tembalang');
-            }
+                updateLocationStatus(false, errorMsg);
+            },
+            options  // Gunakan options dengan high accuracy
         );
     } else {
         // Fallback jika browser tidak support geolocation
@@ -483,8 +505,8 @@ function resetFilters() {
     restaurantMarkers.forEach(marker => map.removeLayer(marker));
     restaurantMarkers = [];
     
-    // Reset map view to UNDIP
-    map.setView([userLocation.lat, userLocation.lng], 15);
+    // Reset map view to user location
+    map.setView([userLocation.lat, userLocation.lng], 16);
 }
 
 // ============================================
