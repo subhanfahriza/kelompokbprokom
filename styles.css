@@ -548,6 +548,27 @@ body {
 }
 
 /* ============================================
+   LEAFLET MARKER CUSTOM STYLE
+   ============================================ */
+
+.leaflet-marker-icon {
+    z-index: 1000 !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.leaflet-marker-pane {
+    z-index: 600 !important;
+}
+
+.leaflet-marker-icon img {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* ============================================
    MODAL
    ============================================ */
 

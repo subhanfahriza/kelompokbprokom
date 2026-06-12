@@ -65,11 +65,12 @@ function initMap() {
     L.marker([UNDIP_CENTER.lat, UNDIP_CENTER.lng], {
         icon: L.icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],
-            shadowSize: [41, 41]
+            shadowSize: [41, 41],
+            shadowAnchor: [12, 41]
         })
     }).addTo(map).bindPopup('<strong>📍 Kampus Utama Universitas Diponegoro (Undip)</strong><br/>Referensi lokasi pencarian');
 }
@@ -236,11 +237,12 @@ function addUserMarker() {
     userMarker = L.marker([userLocation.lat, userLocation.lng], {
         icon: L.icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],
-            shadowSize: [41, 41]
+            shadowSize: [41, 41],
+            shadowAnchor: [12, 41]
         })
     }).addTo(map).bindPopup('<strong>📍 Lokasi Anda</strong><br/>Posisi saat ini');
 
@@ -253,21 +255,27 @@ function addUserMarker() {
 // ============================================
 
 function addPulseAnimation(marker) {
-    const element = marker._icon;
-    if (element) {
-        element.style.animation = 'pulse 2s infinite';
-        if (!document.querySelector('style[data-pulse]')) {
-            const style = document.createElement('style');
-            style.setAttribute('data-pulse', 'true');
-            style.textContent = `
-                @keyframes pulse {
-                    0%, 100% { filter: drop-shadow(0 0 0 rgba(0,0,0,0.3)); }
-                    50% { filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5)); }
-                }
-            `;
-            document.head.appendChild(style);
+    // Delay untuk memastikan element sudah di-render ke DOM
+    setTimeout(() => {
+        const element = marker._icon;
+        if (element) {
+            element.style.animation = 'pulse 2s infinite';
+            element.style.zIndex = '1001';
+            element.style.pointerEvents = 'auto';
+            
+            if (!document.querySelector('style[data-pulse]')) {
+                const style = document.createElement('style');
+                style.setAttribute('data-pulse', 'true');
+                style.textContent = `
+                    @keyframes pulse {
+                        0%, 100% { filter: drop-shadow(0 0 0 rgba(0,0,0,0.3)); }
+                        50% { filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5)); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
         }
-    }
+    }, 50);
 }
 
 // ============================================
@@ -451,13 +459,15 @@ function updateMapMarkers(results) {
         const marker = L.marker([restaurant.lat, restaurant.lng], {
             icon: L.icon({
                 iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
                 iconSize: [25, 41],
                 iconAnchor: [12, 41],
                 popupAnchor: [1, -34],
-                shadowSize: [41, 41]
+                shadowSize: [41, 41],
+                shadowAnchor: [12, 41]
             })
         }).addTo(map);
+        
         console.log('[MAP] Adding marker:', restaurant.name, 'lat=', restaurant.lat, 'lng=', restaurant.lng);
         
         // Bind popup
@@ -473,9 +483,15 @@ function updateMapMarkers(results) {
         `;
         marker.bindPopup(popupContent);
         
-        // Add animation
-        marker._icon.style.animation = `slideIn 0.3s ease forwards`;
-        marker._icon.style.animationDelay = `${index * 0.05}s`;
+        // Add animation dengan delay untuk memastikan icon sudah ter-render
+        setTimeout(() => {
+            if (marker._icon) {
+                marker._icon.style.animation = `slideIn 0.3s ease forwards`;
+                marker._icon.style.animationDelay = `${index * 0.05}s`;
+                marker._icon.style.zIndex = 1000 + index;
+                marker._icon.style.pointerEvents = 'auto';
+            }
+        }, 50);
         
         restaurantMarkers.push(marker);
     });
