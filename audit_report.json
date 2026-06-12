@@ -1,0 +1,186 @@
+﻿{
+    "undip_reference":  {
+                            "longitude":  110.438056,
+                            "latitude":  -7.048889
+                        },
+    "max_distance_km":  5,
+    "timestamp":  "2026-06-12T09:21:03.3463208Z",
+    "summary":  {
+                    "removed_restaurants":  0,
+                    "verified_restaurants":  21,
+                    "total_restaurants":  21
+                },
+    "verified_restaurants":  [
+                                 {
+                                     "id":  1,
+                                     "name":  "Warung Nasi Kuning Mbah Sarno",
+                                     "latitude":  -7.0675,
+                                     "address":  "Jl. Prof. Soedarto SH, Tembalang",
+                                     "distance_km":  4.01,
+                                     "longitude":  110.4069
+                                 },
+                                 {
+                                     "id":  2,
+                                     "name":  "Restoran Seafood Nikmat",
+                                     "latitude":  -7.0685,
+                                     "address":  "Jl. Prof. Soedarto No. 123, Tembalang",
+                                     "distance_km":  4.25,
+                                     "longitude":  110.405
+                                 },
+                                 {
+                                     "id":  3,
+                                     "name":  "Cafe Tembalang Indah",
+                                     "latitude":  -7.062,
+                                     "address":  "Jl. Tembalang No. 45, Semarang",
+                                     "distance_km":  3.42,
+                                     "longitude":  110.41
+                                 },
+                                 {
+                                     "id":  4,
+                                     "name":  "Warung Mie Ayam Cabe Rawit",
+                                     "latitude":  -7.07,
+                                     "address":  "Jl. Pendidikan, Tembalang",
+                                     "distance_km":  4.06,
+                                     "longitude":  110.408
+                                 },
+                                 {
+                                     "id":  5,
+                                     "name":  "Restoran Padang Rasa Sabar",
+                                     "latitude":  -7.075,
+                                     "address":  "Jl. Bulusan No. 67, Tembalang",
+                                     "distance_km":  4.09,
+                                     "longitude":  110.412
+                                 },
+                                 {
+                                     "id":  6,
+                                     "name":  "KFC Tembalang",
+                                     "latitude":  -7.066,
+                                     "address":  "Jl. Prof. Soedarto, Tembalang",
+                                     "distance_km":  4.02,
+                                     "longitude":  110.406
+                                 },
+                                 {
+                                     "id":  7,
+                                     "name":  "Boba Tea Tembalang Premium",
+                                     "latitude":  -7.059,
+                                     "address":  "Jl. Tirto Agung, Tembalang",
+                                     "distance_km":  2.88,
+                                     "longitude":  110.414
+                                 },
+                                 {
+                                     "id":  8,
+                                     "name":  "Soto Ayam Lampir Mak Tini",
+                                     "latitude":  -7.068,
+                                     "address":  "Jl. Pendidikan, Tembalang",
+                                     "distance_km":  3.85,
+                                     "longitude":  110.409
+                                 },
+                                 {
+                                     "id":  9,
+                                     "name":  "McDonald\u0027s Tembalang",
+                                     "latitude":  -7.067,
+                                     "address":  "Jl. Prof. Soedarto No. 100, Tembalang",
+                                     "distance_km":  3.93,
+                                     "longitude":  110.4075
+                                 },
+                                 {
+                                     "id":  10,
+                                     "name":  "Warung Bakso Boyo",
+                                     "latitude":  -7.061,
+                                     "address":  "Jl. Tembalang Atas No. 12, Semarang",
+                                     "distance_km":  3.28,
+                                     "longitude":  110.411
+                                 },
+                                 {
+                                     "id":  11,
+                                     "name":  "Grill House Tembalang",
+                                     "latitude":  -7.054,
+                                     "address":  "Jl. Ngesrep, Tembalang",
+                                     "distance_km":  2.29,
+                                     "longitude":  110.418
+                                 },
+                                 {
+                                     "id":  12,
+                                     "name":  "Warung Tahu Goreng Cemplon",
+                                     "latitude":  -7.082,
+                                     "address":  "Jl. Bulusan No. 34, Tembalang",
+                                     "distance_km":  4.48,
+                                     "longitude":  110.415
+                                 },
+                                 {
+                                     "id":  13,
+                                     "name":  "Martabak Mesir Asli Tembalang",
+                                     "latitude":  -7.0675,
+                                     "address":  "Jl. Prof. Soedarto, Tembalang",
+                                     "distance_km":  4,
+                                     "longitude":  110.407
+                                 },
+                                 {
+                                     "id":  14,
+                                     "name":  "Ayam Betutu Bali Tembalang",
+                                     "latitude":  -7.058,
+                                     "address":  "Jl. Tirto Agung No. 88, Tembalang",
+                                     "distance_km":  2.64,
+                                     "longitude":  110.416
+                                 },
+                                 {
+                                     "id":  15,
+                                     "name":  "Jus Buah Segar Tembalang",
+                                     "latitude":  -7.0695,
+                                     "address":  "Jl. Pendidikan, Tembalang",
+                                     "distance_km":  3.99,
+                                     "longitude":  110.4085
+                                 },
+                                 {
+                                     "id":  16,
+                                     "name":  "Pasta Italia Tembalang",
+                                     "latitude":  -7.0615,
+                                     "address":  "Jl. Tembalang No. 99, Semarang",
+                                     "distance_km":  3.35,
+                                     "longitude":  110.4105
+                                 },
+                                 {
+                                     "id":  17,
+                                     "name":  "Warung Es Cendol Ulek",
+                                     "latitude":  -7.0765,
+                                     "address":  "Jl. Bulusan, Tembalang",
+                                     "distance_km":  4.1,
+                                     "longitude":  110.4135
+                                 },
+                                 {
+                                     "id":  18,
+                                     "name":  "Roti Bakar Surya Jaya",
+                                     "latitude":  -7.0535,
+                                     "address":  "Jl. Ngesrep, Tembalang",
+                                     "distance_km":  2.11,
+                                     "longitude":  110.4195
+                                 },
+                                 {
+                                     "id":  19,
+                                     "name":  "Kari Kambing Tanjung",
+                                     "latitude":  -7.067,
+                                     "address":  "Jl. Prof. Soedarto, Tembalang",
+                                     "distance_km":  3.83,
+                                     "longitude":  110.4085
+                                 },
+                                 {
+                                     "id":  20,
+                                     "name":  "Warung Lumpia dan Bakso Enak",
+                                     "latitude":  -7.06,
+                                     "address":  "Jl. Tirto Agung, Tembalang",
+                                     "distance_km":  2.73,
+                                     "longitude":  110.416
+                                 },
+                                 {
+                                     "id":  21,
+                                     "name":  "Ayam Geprek Maestro",
+                                     "latitude":  -7.083,
+                                     "address":  "Jl. Gerung Sari 1C, Kelurahan Bulusan, Kecamatan Tembalang, Semarang",
+                                     "distance_km":  4.51,
+                                     "longitude":  110.416
+                                 }
+                             ],
+    "removed_restaurants":  [
+
+                            ]
+}
