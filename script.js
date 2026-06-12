@@ -291,10 +291,8 @@ function updateLocationStatus(success, message) {
         locationStatus.classList.add('error');
     }
     
-    // Hide after 3 seconds
-    setTimeout(() => {
+    
         locationStatus.style.opacity = '0.5';
-    }, 3000);
 }
 
 // ============================================
